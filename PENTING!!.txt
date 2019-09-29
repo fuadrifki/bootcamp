@@ -1,0 +1,44 @@
+// install angular
+1. npm install -g @angular/cli
+// buat project
+2. ng new nama-project
+3. cd nama project
+// mengaktifkan angular
+4. ng serve
+// buat component
+5. ng g component nama-component (ex: gst-add, gst-get, dll)
+// konfigurasi form
+// buat form di gst-add.component.html
+// buka gst-add.component.ts
+// import gstAddComponent ke app-routing.module.ts
+// tambahkan di routes
+{
+    path: 'business/create',
+    component: GstAddComponent
+  }
+
+konfigurasi ke API
+6. cd api
+// mengaktifkan server back end
+7. nodemon server.js
+
+// buka business.service.ts
+// koneksi ke API
+// import Injectable dari '$angular/core'
+//import HttpClient dari '@angluar/common/http'
+@injectable({
+   providedIn: 'root';
+})
+export class BusinessService {
+   uri: 'http://localhost:3000/business';
+
+    constructor(private http: HttpClient) {}
+
+    getBusinesses() {
+        return this.http.get(`${this.uri}`);
+    }
+}
+
+konfigurasi mongodb
+// mengaktifkan mongod
+8. C:\Program Files\MongoDB\Server\4.2\bin > mongod

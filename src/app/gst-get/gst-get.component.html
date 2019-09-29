@@ -1,0 +1,35 @@
+    <br>
+    <br>
+
+    <div class="form-group">
+        <input type="text" class="form-control" id="exampleInputName" placeholder="Search" aria-describedby="emailHelp">
+    </div>
+
+        <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th width="20%">Id</th>
+                <th width="20%">Owner</th>
+                <th width="20%">Company Name</th>
+                <th width="20%">GST Number</th>
+                <th width="20%">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of bisnis">
+                <td>{{data._id}}</td>
+                <td>{{data.person_name}}</td>
+                <td>{{data.business_name}}</td>
+                <td>{{data.business_gst_number}}</td>
+                <td>
+                    <a class="btn btn-info" [routerLink]="['/business/detail', data._id]"> Show </a>
+                    <a class="btn btn-primary"> Edit </a>
+                    <a class="btn btn-danger" (click)="deleteBusiness(data._id)" onClick="return confirm('Are you sure?')"><i class="fa fa-trash"></i> Hapus </a>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+        <div class="ln_solid"></div>
+        <hr>
+            <button routerLink="/business/create" class="btn btn-primary"><i class="fas fa-plus"></i> Add new</button>
+            <button (click)="refresh()" class="btn btn-secondary"><i class="fas fa-sync-alt"></i> Refresh</button>
